@@ -3,9 +3,28 @@ pipeline {
     parameters {string defaultValue: '', description: 'Please type the environment', name: 'env'}
     stages {
         stage('Deploy') {
-            steps {
+             when{
+             branch Develop/tasks
+             }
+             steps {
                 echo 'Hello World'
-            }
+             }
+        }
+         stage('Testing') {
+             when{
+             branch Testing/tasks
+             }
+             steps {
+                echo 'Hello World'
+             }
+        }
+         stage('production') {
+             when{
+             branch main
+             }
+             steps {
+                echo 'Hello World'
+             }
         }
     }
 }
