@@ -1,1 +1,11 @@
-ansnbxn
+pipeline {
+    agent any
+    parameters {string defaultValue: '', description: 'Please type the environment', name: 'env'}
+    stages {
+        stage('Deploy') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
