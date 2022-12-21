@@ -1,10 +1,15 @@
 pipeline {
     agent any
-    parameters {string defaultValue: '', description: 'Please type the environment', name: 'env'}
+    
+    parameters {choice(
+            name: 'env',
+            choices: ['Develop/tasks', 'Testing/tasks', 'main'],
+            description: ''
+        )}
     stages {
         stage('Deploy') {
              when{
-             branch Develop/tasks
+             branch 'Develop/tasks'
              }
              steps {
                 echo 'Hello World'
@@ -12,7 +17,7 @@ pipeline {
         }
          stage('Testing') {
              when{
-             branch Testing/tasks
+             branch 'Testing/tasks'
              }
              steps {
                 echo 'Hello World'
@@ -20,7 +25,7 @@ pipeline {
         }
          stage('production') {
              when{
-             branch main
+             branch 'main'
              }
              steps {
                 echo 'Hello World'
